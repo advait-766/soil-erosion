@@ -7,6 +7,10 @@ import math
 import pickle
 import logging
 import numpy as np
+if sys.version_info.major >= 3:
+    from configparser import ConfigParser
+else:
+    from ConfigParser import ConfigParser
 
 from smoderp2d.providers import Logger
 from smoderp2d.providers.base.exceptions import DataPreparationError
