@@ -191,6 +191,13 @@ class BaseProvider(object):
         if self.args.typecomp == CompType.roff:
             data = self._load_roff(self.args.data_file)
 
+        # add advanced setting 
+        path = os.path.join(os.path.dirname(__file__), '..', '..',
+        'advanced.cfg')
+        advanced_config = ConfigParser() 
+        advanced_config.read(path)
+        data['extraOut'] = advanced_config.getboolean('IO', 'extraout')
+
         # roff || full
         self._set_globals(data)
 
